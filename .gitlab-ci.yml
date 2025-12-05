@@ -1,0 +1,10 @@
+#.gitlab-ci.yml
+stages:
+  - test
+
+syntax_check:
+  stage: test
+  image: python:3.9-slim
+  script:
+    - pip install -r requirements.txt
+    - python -m py_compile $(find . -name "*.py")
