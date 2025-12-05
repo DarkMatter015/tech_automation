@@ -1,0 +1,19 @@
+# docker-compose.yml
+services:
+  app-votacao:
+    build: .
+    container_name: app-votacao
+    image: app-votacao:latest
+    ports:
+      - "5000:5000"   
+    networks:
+      - monitor-net
+
+  prometheus:
+    image: prom/prometheus:latest
+    volumes:
+      - ./prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    networks:
+      - monitor-net
