@@ -4,7 +4,7 @@ services:
     container_name: app-votacao
     image: app-votacao:latest
     ports:
-      - "5000:5000"   
+      - "5000:5000"   # ajuste se seu app usar outra porta
     networks:
       - monitor-net
 
