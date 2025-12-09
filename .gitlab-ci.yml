@@ -1,6 +1,6 @@
-#.gitlab-ci.yml
 stages:
   - test
+  - build
 
 syntax_check:
   stage: test
@@ -8,3 +8,11 @@ syntax_check:
   script:
     - pip install -r requirements.txt
     - python -m py_compile $(find . -name "*.py")
+
+build_check:
+  stage: build
+  image: docker:latest
+  services:
+    - docker:dind
+  script:
+    - docker compose up -d --build
